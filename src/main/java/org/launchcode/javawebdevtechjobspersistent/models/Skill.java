@@ -1,5 +1,24 @@
 package org.launchcode.javawebdevtechjobspersistent.models;
 
-public class Skill extends AbstractEntity {
+import javax.persistence.Entity;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 
+@Entity
+public class Skill extends AbstractEntity {
+    //Validation
+    @Size(max=500, message="Description too long!")
+    private String description;
+
+    //No Arg Constructor
+    public Skill(){
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
 }
