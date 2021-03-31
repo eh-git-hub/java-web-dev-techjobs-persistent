@@ -1,20 +1,23 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org/">
-<head th:replace="fragments :: head"></head>
+<html xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="fragments :: head">
+</head>
+<body>
 
-<body class="container  body-content">
-<h1 th:text="${'Skill: ' + skill.name}">Default Title</h1>
+<div th:replace="fragments :: page-header"></div>
 
-<nav th:replace="fragments :: page-header"></nav>
+<p th:unless="${skills} and ${skills.size()}">no jobs!</p>
 
-<div class="job-listing">
-    <p th:text="${'Name: ' + skill.name}"></p>
-    <p th:text="${'Description: ' + skill.description}"></p>
-    <p> Jobs:
+<div class="container body-content">
+    <h2>Skills</h2>
     <ul>
-        <li th:each="job : ${skill.jobs}">
-            <a th:href="@{'/view/' + ${job.id}}" th:text="${job.name}"></a>
+        <li th:each="skill : ${skills}">
+            <a th:href="@{'/skills/view/' + ${skill.id}}" th:text="${skill.name}"></a>
         </li>
     </ul>
-    </p>
+    <a th:href="@{'/skills/add'}">Add Skills</a>
+
 </div>
+
+</body>
+</html>

@@ -22,9 +22,16 @@ public class SkillController {
     //TODO: Add index method
     @GetMapping
     public String displayAllSkills(Model model){
-        model.addAttribute("skill", skillRepository.findAll());
+        model.addAttribute("skills", skillRepository.findAll());
         return "skills/index";
     }
+
+    //Code suggestion by JC
+//    @GetMapping("add")
+//    public String displayAddSkillForm(Model model) {
+//        model.addAttribute("skill", new Skill());
+//        return "skills/add";
+//    }
 
     @GetMapping("add")
     public String displayAddSkillForm(Model model) {
@@ -52,7 +59,7 @@ public class SkillController {
         Optional optSkill = skillRepository.findById(skillId);
         if (optSkill.isPresent()) {
             Skill skill = (Skill) optSkill.get();
-            model.addAttribute("skill", skill);
+            model.addAttribute("skills", skill);
             return "skills/view";
         } else {
             return "redirect:../";
