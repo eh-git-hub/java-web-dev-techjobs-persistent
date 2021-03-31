@@ -15,11 +15,11 @@ public class Employer extends AbstractEntity {
     @Size(min=5, max=50, message="Location must be between 5 and 50 characters")
     private String location;
 
+    //TODO: Use the @OneToMany and @JoinColumn annotations on the jobs list in Employer to declare the relationship between data tables.
     @OneToMany
     @JoinColumn
     private List<Job> jobs = new ArrayList<>();
 
-    //TODO: Use the @OneToMany and @JoinColumn annotations on the jobs list in Employer to declare the relationship between data tables.
 
     //No Arg Constructor
     public Employer(){
