@@ -23,6 +23,12 @@ public class Job extends AbstractEntity{
         this.skills = skills;
     }
 
+    //    public Job(Employer employer, List<Skill> skills) {
+//        super();
+//        this.employer = employer;
+//        this.skills = skills;
+//    }
+
     // Getters and setters
     public Employer getEmployer() {
         return employer;

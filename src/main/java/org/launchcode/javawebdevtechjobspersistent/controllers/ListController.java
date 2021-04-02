@@ -1,7 +1,10 @@
 package org.launchcode.javawebdevtechjobspersistent.controllers;
 
 import org.launchcode.javawebdevtechjobspersistent.models.Job;
+import org.launchcode.javawebdevtechjobspersistent.models.Skill;
+import org.launchcode.javawebdevtechjobspersistent.models.data.EmployerRepository;
 import org.launchcode.javawebdevtechjobspersistent.models.data.JobRepository;
+import org.launchcode.javawebdevtechjobspersistent.models.data.SkillRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -22,6 +25,12 @@ public class ListController {
     @Autowired
     private JobRepository jobRepository;
 
+    @Autowired
+    private EmployerRepository employerRepository;
+
+    @Autowired
+    private SkillRepository skillRepository;
+
     static HashMap<String, String> columnChoices = new HashMap<>();
 
     public ListController () {
@@ -31,9 +40,12 @@ public class ListController {
         columnChoices.put("skill", "Skill");
 
     }
-
+    //TODO:  pass the employer and skill data from those repositories into the view template rendered at list/
     @RequestMapping("")
     public String list(Model model) {
+        model.addAttribute("View All", jobRepository.findAll());
+        model.addAttribute("employers", employerRepository.findAll());
+        model.addAttribute("skills", skillRepository.findAll());
 
         return "list";
     }
