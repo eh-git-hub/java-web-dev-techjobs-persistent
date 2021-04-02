@@ -41,6 +41,7 @@ public class HomeController {
         return "index";
     }
 
+    //error after adding new job
     @GetMapping("add")
     public String displayAddJobForm(Model model) {
         model.addAttribute("title", "Add Job");
